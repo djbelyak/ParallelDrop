@@ -2,7 +2,7 @@ CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
 OBJS =		ParallelDrop.o
 
-LIBS =
+LIBS =		-lm -lrt 
 
 TARGET =	ParallelDrop
 

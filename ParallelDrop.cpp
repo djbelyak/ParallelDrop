@@ -8,8 +8,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int main(void) {
-	puts("!!!Hello World!!!");
+int main(void)
+{
+	printf("Sin(1)=%f", sin(1));
 	return EXIT_SUCCESS;
 }
