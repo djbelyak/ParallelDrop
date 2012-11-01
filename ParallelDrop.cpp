@@ -11,11 +11,20 @@
 #include <math.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
+#include <time.h>
+
+#define CLOCK_REALTIME 0
 
 
 double f(double x, double y)
 {
 	return cos (pow(x,2)+pow(y,2));
+}
+
+void draw_string_bitmap(void *font, const char* string)
+{
+  while (*string)
+    glutBitmapCharacter(font, *string++);
 }
 
 void init ()
@@ -75,8 +84,12 @@ void display ()
       glVertex3d(0.0, 0.0, 10.0);
   glEnd();
 
-  long n = 1000; //Количество точек по x
-  long m = 1000; //Количество точек по y
+  //Начинаем отсчет времени выполнения
+  struct timespec tStart;
+  clock_gettime(CLOCK_REALTIME, &tStart);
+
+  long n = 10000; //Количество точек по x
+  long m = 10000; //Количество точек по y
   double x_b=-10.0, x_e=10.0, y_b=-10.0, y_e=10.0;
   double d_x = (x_e-x_b)/(double)n;
   double d_y = (y_e-y_b)/(double)m;
@@ -103,6 +116,12 @@ void display ()
   		  }
   glEnd();
 
+  //Останавливаем отсчет времени выполнения
+  	struct timespec tStop;
+  	clock_gettime(CLOCK_REALTIME, &tStop);
+
+  	//Выводим время работы программы
+  	printf("Численный расчет выполнен за %.3f сек\n", (float)(tStop.tv_sec - tStart.tv_sec));
 
   glutSwapBuffers ();
 }
