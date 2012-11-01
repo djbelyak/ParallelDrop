@@ -37,7 +37,7 @@ reshape (int w, int h)
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
   gluPerspective (45.0, (GLfloat)w/(GLfloat)h, 0.1, 1000.0);
-
+  gluLookAt(0.0, 0.0, 7.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
   glMatrixMode (GL_MODELVIEW);
   glLoadIdentity ();
 
@@ -56,10 +56,10 @@ display ()
   glLoadIdentity ();
 
   /* Позиционирование камеры */
-  glTranslated (0.0f, 0.0f, -7.0f);
-  glRotated (0.0f, 1.0f, 0.0f, 0.0f);
-  glRotated (0.0f, 0.0f, 1.0f, 0.0f);
-  glRotated (0.0f, 0.0f, 0.0f, 1.0f);
+  //glTranslated (0.0f, 0.0f, -7.0f);
+  //glRotated (0.0f, 1.0f, 0.0f, 0.0f);
+  //glRotated (0.0f, 0.0f, 1.0f, 0.0f);
+  //glRotated (0.0f, 0.0f, 0.0f, 1.0f);
 
 
   glBegin(GL_TRIANGLES);
