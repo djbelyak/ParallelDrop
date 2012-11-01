@@ -52,6 +52,7 @@ void
 display ()
 {
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
   glLoadIdentity ();
 
   /* Позиционирование камеры */
@@ -60,10 +61,32 @@ display ()
   glRotated (0.0f, 0.0f, 1.0f, 0.0f);
   glRotated (0.0f, 0.0f, 0.0f, 1.0f);
 
-  /* Отрисовка чайника */
-  glutSolidTeapot (1.0f);
+
+  glBegin(GL_TRIANGLES);
+  	  glColor3d(1.0,0.0,0.0);
+      glVertex3d( 0.0, 1.0, 0.0);
+      glColor3d(0.0,1.0,0.0);
+      glVertex3d(-1.0, -1.0, 0.0);
+      glColor3d(0.0,0.0,1.0);
+      glVertex3d( 1.0, -1.0, 0.0);
+  glEnd();
+
 
   glutSwapBuffers ();
+}
+
+void keyPressed(unsigned char key, int x, int y)
+{
+
+    /* If escape is pressed, kill everything. */
+    if (key == 27)
+    {
+	/* shut down our window */
+	glutDestroyWindow(glutGetWindow());
+
+	/* exit the program...normal termination. */
+	exit(0);
+    }
 }
 
 /**
@@ -78,7 +101,7 @@ main (int argc, char *argv[])
   /* Создание OpenGL окна */
   glutInitDisplayMode (GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
   glutInitWindowSize (640, 480);
-  glutCreateWindow ("Простое окно");
+  glutCreateWindow ("ParallelDrop");
 
   /* Инициализация приложения */
   init ();
@@ -86,6 +109,7 @@ main (int argc, char *argv[])
   /* Настройка функций обратной связи GLUT */
   glutReshapeFunc (reshape);
   glutDisplayFunc (display);
+  glutKeyboardFunc(&keyPressed);
 
   /* Вход в основной цикл */
   glutMainLoop ();

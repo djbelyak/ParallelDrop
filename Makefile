@@ -1,4 +1,4 @@
-CXXFLAGS =	-O2 -g -Wall -fmessage-length=0 -std=c99 
+CXXFLAGS =	-O2 -g -Wall -fmessage-length=0 
 
 OBJS =		ParallelDrop.o
 
