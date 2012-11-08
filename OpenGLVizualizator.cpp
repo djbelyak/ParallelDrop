@@ -31,8 +31,9 @@ namespace CppParallelDrop
 	 * w - ширина окна (пикселы)
 	 * h - высота окна (пикселы)
 	 */
-	static void OpenGLVizualizator::Reshape(int w, int h)
+	void OpenGLVizualizator::Reshape(int w, int h)
 	{
+
 		//Если высота окна равна 0 - искусственно увеличиваем ее до 1
 		if (h == 0)
 			h = 1;
@@ -61,13 +62,13 @@ namespace CppParallelDrop
 	 * Метод обработки нажатий клавиш
 	 * key - код нажатой клавиши
 	 */
-	void static OpenGLVizualizator::KeyPressed(unsigned char key, int x, int y)
+	void OpenGLVizualizator::KeyPressed(unsigned char key, int x, int y)
 	{
 		// Если нажали ECS
 		if (key == key_ESC)
 		{
 			//Закрываем окно
-			glutDestroyWindow(glutGetWindow());
+			glutDestroyWindow((int)glutGetWindow());
 			//Выходим из программы
 			exit(0);
 		}
@@ -76,7 +77,7 @@ namespace CppParallelDrop
 	/*
 	 * Метод отрисовки сцены OpenGL
 	 */
-	void static OpenGLVizualizator::Display()
+	void OpenGLVizualizator::Display()
 	{
 		//Очищаем буферы кадра  и глубины
 		glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,10 +109,10 @@ namespace CppParallelDrop
 	/*
 	 * Метод запуска приложения
 	 */
-	void Start (int argc, char* argv[])
+	void OpenGLVizualizator::Start (int argc, char** args)
 	{
 		//Инициализация GLUT
-		glutInit (&argc, argv);
+		glutInit (&argc,args);
 
 		//Создание OpenGL окна
 		glutInitDisplayMode (GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
@@ -129,7 +130,7 @@ namespace CppParallelDrop
 		//Вход в основной цикл
 		glutMainLoop ();
 
-	}
+	};
 
 }
 

@@ -9,17 +9,15 @@
 
 #include "OpenGLVizualizator.h"
 
-//using namespace CppParallelDrop;
+
 
 /**
  * Главная функция программы.
  */
-int
-main (int argc, char *argv[])
+int main(int argc, char** args)
 {
-
-	CppParallelDrop::OpenGLVizualizator viz;
-	viz.Start(argc,argv);
-
-  return 0;
+	using namespace CppParallelDrop;
+	OpenGLVizualizator* viz = new OpenGLVizualizator();
+	viz->Start(argc,args);
+	return 0;
 }

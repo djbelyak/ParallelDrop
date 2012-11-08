@@ -1,17 +1,14 @@
 CC=g++
-CFLAGS= -fopenmp -O2 -g -Wall -fmessage-length=0 
-LDFLAGS= -lm -lrt -lglut -lglut -lGLU
-SOURCES= OpenGLVizualizator.cpp ParallelDrop.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=ParallelDrop
+CFLAGS= -fopenmp -O2 -g -Wall -fmessage-length=0  
+LDFLAGS= 
+SOURCES= OpenGLVizualizator.cpp ParallelDrop.cpp 
+LIBS= -lm -lrt -lglut -lGLU
 
-all: $(SOURCES) $(EXECUTABLE)
-    
-$(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+all: 
+	$(CC) -c $(CFLAGS) ParallelDrop.cpp
+	$(CC) -c $(CFLAGS) OpenGLVizualizator.cpp
+	$(CC) -o ParallelDrop ParallelDrop.o OpenGLVizualizator.o $(LIBS)
 
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
 	
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE)
+	rm -rf *.o ParallelDrop

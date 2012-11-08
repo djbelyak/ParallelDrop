@@ -4,13 +4,16 @@
  *  Created on: 08.11.2012
  *      Author: djbelyak
  */
-#include <GL/glu.h>
-#include <GL/glut.h>
+
 
 #ifndef OPENGLVIZUALIZATOR_H_
 #define OPENGLVIZUALIZATOR_H_
 
 #define key_ESC 27
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
 
 namespace CppParallelDrop
 {
@@ -29,19 +32,19 @@ namespace CppParallelDrop
 		/*
 		 * Метод обработки изменения размеров окна
 		 */
-		void static Reshape(int, int);
+		static void Reshape(int, int);
 		/*
 		 * Метод отрисовки сцены OpenGL
 		 */
-		void static Display();
+		static void Display();
 		/*
 		 * Метод обработки нажатий клавиш
 		 */
-		void static KeyPressed(unsigned char, int, int);
+		static void  KeyPressed(unsigned char, int, int);
 		/*
 		 * Метод запуска приложения
 		 */
-		void Start (int, char*[]);
+		static void Start (int, char**);
 	};
 
 
