@@ -5,8 +5,11 @@
  *      Author: djbelyak
  */
 
+
 #ifndef GREED_H_
 #define GREED_H_
+
+#include <math.h>
 
 namespace CppParallelDrop
 {
@@ -17,7 +20,17 @@ namespace CppParallelDrop
 		//Конструктор
 		Greed(double, double, double, double, long, long);
 		//Метод получения X по итеративным координатам
-
+		double getX (long, long);
+		//Метод получения Y по итеративным координатам
+		double getY (long, long);
+		//Метод получения Z по итеративным координатам
+		double getZ (long, long);
+		//Метод получения R по итеративным координатам
+		double getR (long, long);
+		//Метод получения G по итеративным координатам
+		double getG (long, long);
+		//Метод получения B по итеративным координатам
+		double getB (long, long);
 		//Виртуальный деструктор
 		virtual ~Greed();
 	private:
@@ -42,7 +55,7 @@ namespace CppParallelDrop
 		//Функция расчета синего цвета
 		static double CalcB (double);
 		//Метод построения сетки
-		static void Calculate ();
+		void Calculate ();
 		//Массив точек по X
 		double** X;
 		//Массив точек по Y
