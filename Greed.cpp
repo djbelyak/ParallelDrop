@@ -20,6 +20,8 @@ namespace CppParallelDrop
 		//Копируем информацию о разрешении сетки
 		M = m;
 		N = n;
+		//Строим сетку
+		this->Calculate();
 
 	}
 
@@ -79,6 +81,17 @@ namespace CppParallelDrop
 	{
 		return (1.0-Z)/2.0;
 	}
+	//Метод получения итеративных размеров по X
+	long Greed::getM ()
+	{
+		return M-1;
+	}
+	//Метод получения итеративных размеров по Y
+	long Greed::getN ()
+	{
+		return N-1;
+	}
+
 	//Метод построения сетки
 	void Greed::Calculate ()
 	{

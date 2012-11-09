@@ -19,5 +19,6 @@ int main(int argc, char** args)
 	using namespace CppParallelDrop;
 	OpenGLVizualizator* viz = new OpenGLVizualizator();
 	viz->Start(argc,args);
+	delete viz;
 	return 0;
 }

@@ -14,6 +14,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
+#include "Greed.h"
 
 namespace CppParallelDrop
 {
@@ -22,13 +23,23 @@ namespace CppParallelDrop
 	{
 	public:
 		/*
-		 * Конструктор по умолчанию
+		 * Конструктор
 		 */
 		OpenGLVizualizator();
 		/*
 		 * Виртуальный деструктор
 		 */
 		virtual ~OpenGLVizualizator();
+		/*
+		 * Метод запуска приложения
+		 */
+		void Start (int, char**);
+
+	private:
+		/*
+		 * Сетка для построения
+		 */
+		static Greed* greed;
 		/*
 		 * Метод обработки изменения размеров окна
 		 */
@@ -41,12 +52,8 @@ namespace CppParallelDrop
 		 * Метод обработки нажатий клавиш
 		 */
 		static void  KeyPressed(unsigned char, int, int);
-		/*
-		 * Метод запуска приложения
-		 */
-		static void Start (int, char**);
-	};
 
+	};
 
 }
 /* namespace CppParallelDrop */

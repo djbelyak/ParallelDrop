@@ -11,11 +11,11 @@ namespace CppParallelDrop
 {
 
 	/*
-	 * Конструктор по умолчанию
+	 * Конструктор
 	 */
 	OpenGLVizualizator::OpenGLVizualizator()
 	{
-
+		greed = new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 1000);
 	}
 
 	/*
@@ -23,7 +23,7 @@ namespace CppParallelDrop
 	 */
 	OpenGLVizualizator::~OpenGLVizualizator()
 	{
-
+		delete greed;
 	}
 
 	/*
@@ -84,6 +84,26 @@ namespace CppParallelDrop
 		//Загружаем единичную модельно-видовую матрицу
 		glLoadIdentity ();
 
+		//Отрисовываем полигоны
+		glBegin(GL_TRIANGLES);
+			for (long i=0; i<greed->getM(); i++)
+				for (long j=0; j<greed->getN(); j++)
+				{
+					glColor3d(greed->getR(i,j),greed->getG(i,j),greed->getB(i,j));
+					glVertex3d(greed->getX(i,j),greed->getZ(i,j),greed->getY(i,j));
+					glColor3d(greed->getR(i+1,j),greed->getG(i+1,j),greed->getB(i+1,j));
+					glVertex3d(greed->getX(i+1,j),greed->getZ(i+1,j),greed->getY(i+1,j));
+					glColor3d(greed->getR(i+1,j+1),greed->getG(i+1,j+1),greed->getB(i+1,j+1));
+					glVertex3d(greed->getX(i+1,j+1),greed->getZ(i+1,j+1),greed->getY(i+1,j+1));
+
+					glColor3d(greed->getR(i,j),greed->getG(i,j),greed->getB(i,j));
+					glVertex3d(greed->getX(i,j),greed->getZ(i,j),greed->getY(i,j));
+					glColor3d(greed->getR(i,j+1),greed->getG(i,j+1),greed->getB(i,j+1));
+					glVertex3d(greed->getX(i,j+1),greed->getZ(i,j+1),greed->getY(i,j+1));
+					glColor3d(greed->getR(i+1,j+1),greed->getG(i+1,j+1),greed->getB(i+1,j+1));
+					glVertex3d(greed->getX(i+1,j+1),greed->getZ(i+1,j+1),greed->getY(i+1,j+1));
+				}
+		glEnd();
 		//Отрисовываем оси
 		glBegin(GL_LINES);
 		  	  //Ось X

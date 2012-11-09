@@ -31,6 +31,10 @@ namespace CppParallelDrop
 		double getG (long, long);
 		//Метод получения B по итеративным координатам
 		double getB (long, long);
+		//Метод получения итеративных размеров по X
+		long getM ();
+		//Метод получения итеративных размеров по Y
+		long getN ();
 		//Виртуальный деструктор
 		virtual ~Greed();
 	private:
