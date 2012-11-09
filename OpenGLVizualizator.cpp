@@ -84,7 +84,13 @@ namespace CppParallelDrop
 		//Загружаем единичную модельно-видовую матрицу
 		glLoadIdentity ();
 
+		//Засекаем время выполнения
+		struct timespec tStart;
+		clock_gettime(0, &tStart);
+
 		Greed* greed =  new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 10000);
+		struct timespec tStopCalc;
+		clock_gettime(0, &tStopCalc);
 		//Отрисовываем полигоны
 		glBegin(GL_TRIANGLES);
 			for (long i=0; i<greed->getM(); i++)
@@ -123,10 +129,15 @@ namespace CppParallelDrop
 		      glVertex3d(0.0, 0.0, 10.0);
 		glEnd();
 
+		struct timespec tStopRender;
+		clock_gettime(0, &tStopRender);
 		//Отправлем на отрисовку
 		glFlush();
 		//Меняем буферы кадра местами
 		glutSwapBuffers();
+
+		printf("Численный расчет выполнен за %.3f сек\n", (float)(tStopCalc.tv_sec - tStart.tv_sec));
+		printf("Весь расчет выполнен за %.3f сек\n", (float)(tStopRender.tv_sec - tStart.tv_sec));
 	}
 
 	/*

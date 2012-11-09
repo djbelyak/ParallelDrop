@@ -15,6 +15,8 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include "Greed.h"
+#include <time.h>
+#include <stdio.h>
 
 namespace CppParallelDrop
 {
