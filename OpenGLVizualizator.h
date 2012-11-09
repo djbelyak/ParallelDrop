@@ -37,10 +37,6 @@ namespace CppParallelDrop
 
 	private:
 		/*
-		 * Сетка для построения
-		 */
-		static Greed* greed;
-		/*
 		 * Метод обработки изменения размеров окна
 		 */
 		static void Reshape(int, int);

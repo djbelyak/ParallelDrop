@@ -15,7 +15,7 @@ namespace CppParallelDrop
 	 */
 	OpenGLVizualizator::OpenGLVizualizator()
 	{
-		greed = new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 1000);
+		//ljgreed = new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 1000);
 	}
 
 	/*
@@ -23,7 +23,7 @@ namespace CppParallelDrop
 	 */
 	OpenGLVizualizator::~OpenGLVizualizator()
 	{
-		delete greed;
+		//delete greed;
 	}
 
 	/*
@@ -84,6 +84,7 @@ namespace CppParallelDrop
 		//Загружаем единичную модельно-видовую матрицу
 		glLoadIdentity ();
 
+		Greed* greed =  new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 1000);
 		//Отрисовываем полигоны
 		glBegin(GL_TRIANGLES);
 			for (long i=0; i<greed->getM(); i++)
@@ -104,6 +105,8 @@ namespace CppParallelDrop
 					glVertex3d(greed->getX(i+1,j+1),greed->getZ(i+1,j+1),greed->getY(i+1,j+1));
 				}
 		glEnd();
+		delete greed;
+
 		//Отрисовываем оси
 		glBegin(GL_LINES);
 		  	  //Ось X
@@ -143,9 +146,9 @@ namespace CppParallelDrop
 		glClearColor (0.0f, 0.0f, 0.0f, 0.0f);
 
 		//Настройка функций обратной связи GLUT
-		glutReshapeFunc(OpenGLVizualizator::Reshape);
-		glutDisplayFunc(OpenGLVizualizator::Display);
-		glutKeyboardFunc(&OpenGLVizualizator::KeyPressed);
+		glutReshapeFunc(this->Reshape);
+		glutDisplayFunc(this->Display);
+		glutKeyboardFunc(&this->KeyPressed);
 
 		//Вход в основной цикл
 		glutMainLoop ();

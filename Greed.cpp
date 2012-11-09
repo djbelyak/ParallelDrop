@@ -58,7 +58,7 @@ namespace CppParallelDrop
 	//Метод получения B по итеративным координатам
 	double Greed::getB(long i_x, long i_y)
 	{
-		return Z[i_x][i_y];
+		return B[i_x][i_y];
 	}
 
 	//Функция расчета координаты по Z
@@ -74,12 +74,12 @@ namespace CppParallelDrop
 	//Функция расчета зеленого цвета
 	double Greed::CalcG (double Z)
 	{
-		return (1.0+Z)/2.0;
+		return 0.5+Z/2.0;
 	}
 	//Функция расчета синего цвета
 	double Greed::CalcB (double Z)
 	{
-		return (1.0-Z)/2.0;
+		return 0.5-Z/2.0;
 	}
 	//Метод получения итеративных размеров по X
 	long Greed::getM ()
@@ -118,7 +118,7 @@ namespace CppParallelDrop
 			for (long j=0; j<N; j++)
 			{
 				X[i][j] = BeginX + i*(EndX-BeginX)/(double)M;
-				Y[i][j] = BeginY + i*(EndY-BeginY)/(double)N;
+				Y[i][j] = BeginY + j*(EndY-BeginY)/(double)N;
 				Z[i][j] = Greed::CalcZ(X[i][j],Y[i][j]);
 				R[i][j] = Greed::CalcR(0.0);
 				G[i][j] = Greed::CalcG(Z[i][j]);

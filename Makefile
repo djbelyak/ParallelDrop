@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -fopenmp -O2 -g -Wall -fmessage-length=0  
+CFLAGS= -fopenmp -O2 -g -Wall -fmessage-length=0 -fpermissive
 LDFLAGS= 
 SOURCES= OpenGLVizualizator.cpp ParallelDrop.cpp Greed.cpp
 LIBS= -lm -lrt -lglut -lGLU
