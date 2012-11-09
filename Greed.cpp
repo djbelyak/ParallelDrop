@@ -112,8 +112,9 @@ namespace CppParallelDrop
 			B[i] = new double [N];
 		}
 
-		//#pragma omp parallel for
+
 		//Производим расчет сетки
+		#pragma omp parallel for
 		for (long i=0; i<M; i++)
 		{
 			for (long j=0; j<N; j++)
