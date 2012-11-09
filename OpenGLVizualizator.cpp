@@ -84,7 +84,7 @@ namespace CppParallelDrop
 		//Загружаем единичную модельно-видовую матрицу
 		glLoadIdentity ();
 
-		Greed* greed =  new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 1000);
+		Greed* greed =  new Greed (-10.0, -10.0, 10.0, 10.0, 1000, 10000);
 		//Отрисовываем полигоны
 		glBegin(GL_TRIANGLES);
 			for (long i=0; i<greed->getM(); i++)

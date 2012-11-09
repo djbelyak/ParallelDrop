@@ -10,6 +10,7 @@
 #define GREED_H_
 
 #include <math.h>
+#include <omp.h>
 
 namespace CppParallelDrop
 {
